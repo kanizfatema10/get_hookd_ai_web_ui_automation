@@ -14,20 +14,23 @@ import pages.HomePage;
 import pages.LoginPage;
 
 public class HomePageTest extends Base {
+
     RemoteWebDriver driver;
     HomePage homePage;
     LoginPage loginPage;
     Credentials credentials = new Credentials();
 
-    @Test
+    @Test(priority = 1)
     public void createNewFolderTest() {
         setHomePageDriver();
         setLoginPageDriver();
         loginToGethookd();
 
+        //createNewFolder(1);
         createNewFolder();
 
-        String expectedFolderName = "Test"; 
+
+        String expectedFolderName = "Knz Test";
 
         // Find all folder elements within the folder list
         List<WebElement> folderElements = homePage.findFolderElements();
@@ -39,15 +42,66 @@ public class HomePageTest extends Base {
             String folderText = folderElement.getText();
             if (folderText.contains(expectedFolderName)) {
                 folderFound = true;
-                break; // Exit loop if folder is found
+                break;
             }
         }
 
-        // Assert that the expected folder name was found
         Assert.assertTrue(folderFound, "Folder '" + expectedFolderName + "' not found.");
+
+        UtilMethods.waitForSeconds(1);
+        homePage.scrollDowntoCreatedFolder();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnMoreOptionsButton();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnDeleteButton();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnDeleteConfirmationButton();
+        UtilMethods.waitForSeconds(3);
+
+
     }
 
+    // End of folder creation test
 
+    @Test(priority = 2)
+    public void createNewBoardTest() {
+        setHomePageDriver();
+        setLoginPageDriver();
+
+        loginToGethookd();
+
+        createNewFolder();
+
+        homePage.scrollDowntoCreatedFolder();
+        UtilMethods.waitForSeconds(2);
+        homePage.clickOnAddNewBoardButton();
+        UtilMethods.waitForSeconds(1);
+        homePage.setBoardName();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnCreateBoardButton();
+        UtilMethods.waitForSeconds(2);
+        homePage.clickOnCreatedFolder();
+        UtilMethods.waitForSeconds(5);
+
+        WebElement createdBoardElement = homePage.findCreadBoard();
+
+        String expectedBoardName = "Test board";
+        String actualBoardName = createdBoardElement.getText();
+
+        Assert.assertEquals(expectedBoardName,actualBoardName);
+
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnMoreOptionsButton();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnDeleteButton();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnDeleteConfirmationButton();
+        UtilMethods.waitForSeconds(3);
+
+
+    }
+
+    // common methods for all tests
 
     private void createNewFolder() {
         homePage.clickOnAddNewFolderButton();
@@ -55,8 +109,6 @@ public class HomePageTest extends Base {
         homePage.clickOnCreateFolderButton();
         UtilMethods.waitForSeconds(5);
     }
-
-    
 
     public void setHomePageDriver() {
         driver = super.getActiveDriver();
@@ -88,4 +140,5 @@ public class HomePageTest extends Base {
         driver = super.getActiveDriver();
         loginPage = new LoginPage(driver);
     }
+
 }
