@@ -18,8 +18,19 @@ public class LoginTest extends Base {
     @Test
     public void loginTest() {
 
-        setLoginPage();
+        setLoginPageDriver();
 
+        loginToGethookd();
+
+        String expectedURL = "https://gethookdai.melioraweb.eu/swipe-file";
+        String actualURL = loginPage.getHomePageURL();
+
+        Assert.assertEquals(expectedURL, actualURL);
+
+    }
+
+    private void loginToGethookd(){
+        
         loginPage.openLoginPage();
         UtilMethods.waitForSeconds(0.5);
 
@@ -37,15 +48,9 @@ public class LoginTest extends Base {
 
         loginPage.clickOnContinue();
         UtilMethods.waitForSeconds(5);
-
-        String expectedURL = "https://gethookdai.melioraweb.eu/swipe-file";
-        String actualURL = loginPage.getHomePageURL();
-
-        Assert.assertEquals(expectedURL, actualURL);
-
     }
 
-    private void setLoginPage() {
+    private void setLoginPageDriver() {
         driver = super.getActiveDriver();
         loginPage = new LoginPage(driver);
     }
