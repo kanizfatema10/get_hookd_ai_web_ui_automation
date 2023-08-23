@@ -5,16 +5,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.Base;
-import model.Credentials;
 import model.UtilMethods;
 import pages.LoginPage;
 
 public class LoginTest extends Base {
 
-    RemoteWebDriver driver;
-    LoginPage loginPage;
-    Credentials credentials = new Credentials();
+    private RemoteWebDriver driver;
+    private LoginPage loginPage;
 
+    // #region Test: Login Test
     @Test
     public void loginTest() {
 
@@ -28,9 +27,10 @@ public class LoginTest extends Base {
         Assert.assertEquals(expectedURL, actualURL);
 
     }
+    // #endregion
 
-    private void loginToGethookd(){
-        
+    private void loginToGethookd() {
+
         loginPage.openLoginPage();
         UtilMethods.waitForSeconds(0.5);
 
@@ -47,7 +47,7 @@ public class LoginTest extends Base {
         UtilMethods.waitForSeconds(0.5);
 
         loginPage.clickOnContinue();
-        UtilMethods.waitForSeconds(5);
+        UtilMethods.waitForSeconds(3);
     }
 
     private void setLoginPageDriver() {

@@ -1,4 +1,4 @@
-package model;
+package model.locators;
 
 import org.openqa.selenium.By;
 

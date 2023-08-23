@@ -6,82 +6,80 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.WebElement;
 
 import base.Base;
-import model.BoardPageLocators;
 import model.CommonMethods;
-import model.HomePageLocators;
+import model.locators.BoardPageLocators;
+import model.locators.HomePageLocators;
 
 public class HomePage extends Base {
 
-    RemoteWebDriver driver;
-    CommonMethods commonMethods;
-
+    private RemoteWebDriver driver;
 
     public HomePage(RemoteWebDriver driver) {
         this.driver = driver;
         commonMethods = new CommonMethods(this.driver);
     }
 
-    public void clickOnAddNewFolderButton(){
+    public void clickOnAddNewFolderButton() {
         commonMethods.clickOnButton(HomePageLocators.addNewFolderButton);
     }
 
-    public void setNewFolderName(){
+    public void setNewFolderName() {
         commonMethods.setText(HomePageLocators.folderNameField, "Knz Test");
     }
 
-    public void clickOnCreateFolderButton(){
+    public void clickOnCreateFolderButton() {
         commonMethods.clickOnButton(HomePageLocators.createFolderButton);
     }
 
-    public List<WebElement> findFolderElements(){
+    public List<WebElement> findFolderElements() {
         return driver.findElements(HomePageLocators.folderElements);
     }
 
-    public void scrollDowntoCreatedFolder(){
+    public void scrollDowntoCreatedFolder() {
         commonMethods.scrollDown(HomePageLocators.createdFolder);
     }
 
-    public void clickOnAddNewBoardButton(){
+    public void clickOnAddNewBoardButton() {
         commonMethods.clickOnButton(HomePageLocators.addNewBoardButton);
     }
 
-    public void setBoardName(){
+    public void setBoardName() {
         commonMethods.setText(HomePageLocators.folderNameField, "Test board");
     }
 
-    public void clickOnCreateBoardButton(){
+    public void clickOnCreateBoardButton() {
         commonMethods.clickOnButton(HomePageLocators.createBoardButton);
     }
 
-    public void clickOnCreatedFolder(){
+    public void clickOnCreatedFolder() {
         commonMethods.clickOnButton(HomePageLocators.createdFolder);
     }
 
-    public WebElement findCreadBoard(){
+    public WebElement findCreadBoard() {
         return driver.findElement(HomePageLocators.createdBoardElement);
     }
 
-    public void clickOnMoreOptionsButton(){
+    public void clickOnMoreOptionsButton() {
         commonMethods.clickOnButton(HomePageLocators.moreOptionsButtonOfTheCreatedFolder);
     }
 
-    public void clickOnDeleteButton(){
+    public void clickOnDeleteButton() {
         commonMethods.clickOnButton(HomePageLocators.deleteButtonOfTheCreatedFolder);
     }
 
-    public void clickOnDeleteConfirmationButton(){
+    public void clickOnDeleteConfirmationButton() {
         commonMethods.clickOnButton(HomePageLocators.deleteConfirmationButton);
     }
 
-    public void clickOnExploreMenu(){
+    public void clickOnExploreMenu() {
         commonMethods.clickOnButton(HomePageLocators.exploreMenu);
     }
 
-    public void clickOnCreatedBoard(){
+    public void clickOnCreatedBoard() {
         commonMethods.clickOnButton(HomePageLocators.createdBoardElement);
     }
 
-    public WebElement findAdElement(){
+    public WebElement findAdElement() {
         return driver.findElement(BoardPageLocators.addedAd);
     }
 

@@ -14,6 +14,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import model.CommonMethods;
+import model.Credentials;
+
 //import com.aventstack.extentreports.ExtentReports;
 //import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
@@ -26,6 +29,9 @@ public class Base {
     }
 
     private RemoteWebDriver activeDriver;
+
+    protected CommonMethods commonMethods;
+    protected  Credentials credentials = new Credentials();
 
     //protected static ExtentReports extent = new ExtentReports();
     //private ExtentSparkReporter sparkReporter = new ExtentSparkReporter("src/test/reports/ttt_automation_test.html");

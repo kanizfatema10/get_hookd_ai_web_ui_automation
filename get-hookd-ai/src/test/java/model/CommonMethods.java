@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class CommonMethods {
-    
-    RemoteWebDriver driver;
+
+    private RemoteWebDriver driver;
 
     public CommonMethods(RemoteWebDriver driver) {
         this.driver = driver;
@@ -29,8 +29,7 @@ public class CommonMethods {
         return driver.getCurrentUrl();
     }
 
-        public void scrollDown(By targetElement)
-    {  
+    public void scrollDown(By targetElement) {
         WebElement element = driver.findElement(targetElement);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }

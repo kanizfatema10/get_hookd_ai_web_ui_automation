@@ -2,8 +2,8 @@
 <suite name="TestSuite" parallel="none">
     <test name="TestClassExecutionOrder" preserve-order="true">
         <classes>
-            <class name="tests.LoginTest"/>
-            <class name="tests.HomePageTest"/>
+            <class name="tests.LoginTest" />
+            <class name="tests.HomePageTest" />
         </classes>
     </test>
 </suite>
