@@ -47,7 +47,7 @@ public class LoginTest extends Base {
         UtilMethods.waitForSeconds(0.5);
 
         loginPage.clickOnContinue();
-        UtilMethods.waitForSeconds(3);
+        UtilMethods.waitForSeconds(5);
     }
 
     private void setLoginPageDriver() {

@@ -100,7 +100,7 @@ public class HomePageTest extends Base {
 
         UtilMethods.waitForSeconds(1);
         explorePage.clickOnSaveButton();
-        UtilMethods.waitForSeconds(1);
+        UtilMethods.waitForSeconds(2);
 
         // Check if the ad is being saved at the selected board
         homePage.scrollDowntoCreatedFolder();
@@ -147,7 +147,7 @@ public class HomePageTest extends Base {
         loginPage.setPassword(credentials.loginPasswordInputText);
         UtilMethods.waitForSeconds(0.5);
         loginPage.clickOnContinue();
-        UtilMethods.waitForSeconds(3);
+        UtilMethods.waitForSeconds(5);
     }
 
     private void createNewFolder() {
