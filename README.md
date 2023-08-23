@@ -47,3 +47,7 @@
 [Replace the testng.xml file absolute path with yours]
 
 * mvn clean test "-Dsurefire.suiteXmlFiles=C:/Users/username/directory/GetHookdAI Automaiton/get_hookd_ai_web_ui_automation/get-hookd-ai/src/test/resources/testng.xml"
+
+### Note
+
+Each test functions independently, so they all begin with the login process.
