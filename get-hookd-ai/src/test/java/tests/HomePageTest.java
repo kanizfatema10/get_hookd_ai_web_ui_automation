@@ -2,6 +2,7 @@ package tests;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -10,6 +11,7 @@ import org.testng.annotations.Test;
 import base.Base;
 import model.Credentials;
 import model.UtilMethods;
+import pages.ExplorePage;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -18,6 +20,7 @@ public class HomePageTest extends Base {
     RemoteWebDriver driver;
     HomePage homePage;
     LoginPage loginPage;
+    ExplorePage explorePage;
     Credentials credentials = new Credentials();
 
     @Test(priority = 1)
@@ -26,9 +29,8 @@ public class HomePageTest extends Base {
         setLoginPageDriver();
         loginToGethookd();
 
-        //createNewFolder(1);
+        // createNewFolder(1);
         createNewFolder();
-
 
         String expectedFolderName = "Knz Test";
 
@@ -58,10 +60,9 @@ public class HomePageTest extends Base {
         homePage.clickOnDeleteConfirmationButton();
         UtilMethods.waitForSeconds(3);
 
-
     }
 
-    // End of folder creation test
+    // End of Test-1: folder creation
 
     @Test(priority = 2)
     public void createNewBoardTest() {
@@ -88,7 +89,7 @@ public class HomePageTest extends Base {
         String expectedBoardName = "Test board";
         String actualBoardName = createdBoardElement.getText();
 
-        Assert.assertEquals(expectedBoardName,actualBoardName);
+        Assert.assertEquals(expectedBoardName, actualBoardName);
 
         UtilMethods.waitForSeconds(1);
         homePage.clickOnMoreOptionsButton();
@@ -98,6 +99,71 @@ public class HomePageTest extends Base {
         homePage.clickOnDeleteConfirmationButton();
         UtilMethods.waitForSeconds(3);
 
+    }
+
+    // End of Test-2: board creation
+
+    @Test(priority = 3)
+    public void saveAdToBoardTest() {
+        setHomePageDriver();
+        setLoginPageDriver();
+        setExplorePageDriver();
+
+        loginToGethookd();
+
+        createNewFolder();
+
+        homePage.scrollDowntoCreatedFolder();
+        UtilMethods.waitForSeconds(2);
+        homePage.clickOnAddNewBoardButton();
+        UtilMethods.waitForSeconds(1);
+        homePage.setBoardName();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnCreateBoardButton();
+        UtilMethods.waitForSeconds(2);
+        homePage.clickOnCreatedFolder();
+        UtilMethods.waitForSeconds(1);
+
+        homePage.clickOnExploreMenu();
+        UtilMethods.waitForSeconds(1);
+        explorePage.clickOnSelectBoardDropDown();
+        UtilMethods.waitForSeconds(1);
+
+        String expectedOption = "Test board";
+
+        // Find the dropdown list
+        WebElement dropdownList = explorePage.findSelectBoardOptionsContainer();
+
+        // Find all option elements within the dropdown list
+        List<WebElement> optionElements = explorePage.findSelectBoardOptionElements(dropdownList);
+
+        // Iterate through the option elements
+        for (WebElement optionElement : optionElements) {
+            String optionText = optionElement.findElement(By.tagName("span")).getText();
+
+            // Check if the option text matches the expected option
+            if (optionText.equals(expectedOption)) {
+                optionElement.click();
+                break;
+            }
+        }
+
+        UtilMethods.waitForSeconds(1);
+        explorePage.clickOnSaveButton();
+        UtilMethods.waitForSeconds(1);
+
+        homePage.scrollDowntoCreatedFolder();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnCreatedFolder();
+        UtilMethods.waitForSeconds(1);
+        homePage.clickOnCreatedBoard();
+        UtilMethods.waitForSeconds(2);
+
+        // Locate the ad within the board's content
+        WebElement adElement = homePage.findAdElement();
+
+        // Assert that the ad is present on the board
+        Assert.assertNotNull(adElement, "Ad was not added to the board.");
 
     }
 
@@ -113,6 +179,11 @@ public class HomePageTest extends Base {
     public void setHomePageDriver() {
         driver = super.getActiveDriver();
         homePage = new HomePage(driver);
+    }
+
+    public void setExplorePageDriver() {
+        driver = super.getActiveDriver();
+        explorePage = new ExplorePage(driver);
     }
 
     private void loginToGethookd() {

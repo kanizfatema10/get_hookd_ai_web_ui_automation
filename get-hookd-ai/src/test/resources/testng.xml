@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" parallel="none">
+    <test name="TestClassExecutionOrder" preserve-order="true">
+        <classes>
+            <class name="tests.LoginTest"/>
+            <class name="tests.HomePageTest"/>
+        </classes>
+    </test>
+</suite>
+
+<!-- mvn clean test "-Dsurefire.suiteXmlFiles=C:/Users/knzko/Desktop/GetHookdAI Automaiton/get_hookd_ai_web_ui_automation/get-hookd-ai/src/test/resources/testng.xml" -->

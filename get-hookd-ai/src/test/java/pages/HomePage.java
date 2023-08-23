@@ -6,6 +6,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.WebElement;
 
 import base.Base;
+import model.BoardPageLocators;
 import model.CommonMethods;
 import model.HomePageLocators;
 
@@ -57,7 +58,7 @@ public class HomePage extends Base {
     }
 
     public WebElement findCreadBoard(){
-        return driver.findElement(HomePageLocators.createdBoard);
+        return driver.findElement(HomePageLocators.createdBoardElement);
     }
 
     public void clickOnMoreOptionsButton(){
@@ -70,6 +71,18 @@ public class HomePage extends Base {
 
     public void clickOnDeleteConfirmationButton(){
         commonMethods.clickOnButton(HomePageLocators.deleteConfirmationButton);
+    }
+
+    public void clickOnExploreMenu(){
+        commonMethods.clickOnButton(HomePageLocators.exploreMenu);
+    }
+
+    public void clickOnCreatedBoard(){
+        commonMethods.clickOnButton(HomePageLocators.createdBoardElement);
+    }
+
+    public WebElement findAdElement(){
+        return driver.findElement(BoardPageLocators.addedAd);
     }
 
 }
