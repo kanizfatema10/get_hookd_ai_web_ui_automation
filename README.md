@@ -24,15 +24,16 @@
 
 ## Overview of the Test Files
 
-* There are 2 test files in total:
+* There are 3 test files in total:
     * LoginTest.java 
         * contains only the login test
     * HomePageTest.java 
         * contains 3 tests:
             * folder creation
             * board creation
-            * save an ad to the created board 
-
+            * save an ad to the created board  
+   * RegistrationTest.java
+        * contains only the registration test 
 
 
 ## How to Run the Script
@@ -47,3 +48,7 @@
 [Replace the testng.xml file absolute path with yours]
 
 * mvn clean test "-Dsurefire.suiteXmlFiles=C:/Users/username/directory/GetHookdAI Automaiton/get_hookd_ai_web_ui_automation/get-hookd-ai/src/test/resources/testng.xml"
+
+### Note
+
+Each test functions independently, so they all begin with the login process.
