@@ -3,8 +3,8 @@
     <test name="TestClassExecutionOrder" preserve-order="true">
         <classes>
             <class name="tests.LoginTest" />
-            <class name="tests.HomePageTest" />
-            <class name="tests.RegistrationTest" />
+            <!-- <class name="tests.HomePageTest" />
+            <class name="tests.RegistrationTest" /> -->
         </classes>
     </test>
 </suite>

@@ -34,11 +34,11 @@ public class LoginTest extends Base {
         loginPage.openLoginPage();
         UtilMethods.waitForSeconds(0.5);
 
-        loginPage.clickOnModeChange();
-        UtilMethods.waitForSeconds(0.5);
+        // loginPage.clickOnModeChange();
+        // UtilMethods.waitForSeconds(0.5);
 
-        loginPage.clickOnLogin();
-        UtilMethods.waitForSeconds(0.5);
+        // loginPage.clickOnLogin();
+        // UtilMethods.waitForSeconds(0.5);
 
         loginPage.setEmail(credentials.loginUserNameInputText);
         UtilMethods.waitForSeconds(0.5);

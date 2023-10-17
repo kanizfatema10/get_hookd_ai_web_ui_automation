@@ -60,7 +60,7 @@
         <version>3.0.0-M5</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <suiteXmlFile>C:\Users\knzko\Desktop\GetHookdAI Automaiton\get_hookd_ai_web_ui_automation\get-hookd-ai\src\test\resources\testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
